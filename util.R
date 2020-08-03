@@ -17,3 +17,21 @@ matrix_for_subset <- function(subset_new){
   subset_new <- as.matrix(subset_new[,2])
   return(subset_new)
 }
+
+
+#######################
+
+string_1 <-"A~B"
+string_2 <-"A"
+# find some string in variable
+grep("~",string_1)
+grep("~",string_2)
+
+# split string to vector
+ABC<-unlist(strsplit(string_1,split="~"))
+ABC[1]
+ABC[2]
+
+
+# plot label using variable
+lab(paste0("spec\n[ value1 : ",mean(subdataframe$value1)," value2 : ",mean(subdataframe$value2)," value3 : ",mean(subdataframe$value3)," value4 : ",mean(subdataframe$value4)," ]"))
