@@ -1,4 +1,4 @@
-### function to make plot use loop
+### function to make plot use loop -to dumb bell chart
 dumbell_function <- function(subdata,subdataframe,nameset,title_labeling,y_labeling){
   a <- ggplot(subdata)
   for(x in 1:ncol(subdata)){
