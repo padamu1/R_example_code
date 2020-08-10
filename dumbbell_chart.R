@@ -25,14 +25,30 @@ ggplot(subdata)+
   coord_cartesian(ylim=c(30,55))
 
 
-### dumb bell chart by function
+library("squash")
+############## dumb bell chart function + auto color ##################################
 dumbell_function <- function(subdata,subdataframe,nameset,title_labeling,y_labeling){
+  minval=0   #lowest value to get a colour
+  maxval=2.0 #highest value to get a colour
+  n.cols=ncol(subdata)+1 #how many colours do you want in your palette?
+  col.int=1/n.cols
+  
+  #create your palette
+  colramp=makecmap(x=seq(minval,maxval,col.int),
+                   n=n.cols,
+                   breaks=prettyLog,
+                   symm=F,
+                   base=ncol(subdata),#to give ramp a log(base) stretch
+                   colFn=jet,
+                   col.na="red",
+                   right=F,
+                   include.lowest=T)
   a <- ggplot(subdata)
   for(x in 1:ncol(subdata)){
     a<-a+
-      geom_point(aes_string(x=x,y=subdata[1,x]))+
-      geom_point(aes_string(x=x,y=subdata[2,x]))+
-      geom_segment(aes_string(x=x,xend=x,y=subdata[1,x],yend=subdata[2,x]),lineend="butt")
+      geom_point(aes_string(x=x,y=subdata[1,x]),color=colramp$colors[x])+
+      geom_point(aes_string(x=x,y=subdata[2,x]),color=colramp$colors[x])+
+      geom_segment(aes_string(x=x,xend=x,y=subdata[1,x],yend=subdata[2,x]),lineend="butt",color=colramp$colors[x])
   }
   a+
     xlab("spec\n")+ylab(y_labeling)+
