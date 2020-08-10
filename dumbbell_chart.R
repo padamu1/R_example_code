@@ -23,3 +23,18 @@ ggplot(subdata)+
   geom_segment(aes(x="vlaue3",xend="vlaue3",y=max(vlaue3),yend=min(vlaue3)),lineend="butt")+
   xlab("spec")+ylab("value")+
   coord_cartesian(ylim=c(30,55))
+
+
+### dumb bell chart by function
+dumbell_function <- function(subdata,subdataframe,nameset,title_labeling,y_labeling){
+  a <- ggplot(subdata)
+  for(x in 1:ncol(subdata)){
+    a<-a+
+      geom_point(aes_string(x=x,y=subdata[1,x]))+
+      geom_point(aes_string(x=x,y=subdata[2,x]))+
+      geom_segment(aes_string(x=x,xend=x,y=subdata[1,x],yend=subdata[2,x]),lineend="butt")
+  }
+  a+
+    xlab("spec\n")+ylab(y_labeling)+
+    scale_x_continuous(breaks=c(1:ncol(subdata)),labels = nameset)
+}
