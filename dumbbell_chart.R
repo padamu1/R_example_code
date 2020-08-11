@@ -30,7 +30,11 @@ library("squash")
 dumbell_function <- function(subdata,subdataframe,nameset,title_labeling,y_labeling){
   minval=0   #lowest value to get a colour
   maxval=2.0 #highest value to get a colour
-  n.cols=ncol(subdata)+1 #how many colours do you want in your palette?
+  n.cols=ncol(subdata)+1 #how many colours do you want in your palette? "expectance number" + 1 = "expectance number"
+  ## blue coloring - lots of color make
+  ## minval=0
+  ## maxval=1.5 
+  ## n.cols=ncol(subdata)*20
   col.int=1/n.cols
   
   #create your palette
@@ -43,6 +47,7 @@ dumbell_function <- function(subdata,subdataframe,nameset,title_labeling,y_label
                    col.na="red",
                    right=F,
                    include.lowest=T)
+  print(colramp)
   a <- ggplot(subdata)
   for(x in 1:ncol(subdata)){
     a<-a+
