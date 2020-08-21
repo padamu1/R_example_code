@@ -6,5 +6,3 @@
 
 #### check list
 
-- [ ] make folder
-- [ ] sort file
