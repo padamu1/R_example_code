@@ -57,5 +57,8 @@ dumbell_function <- function(subdata,subdataframe,nameset,title_labeling,y_label
   }
   a+
     xlab("spec\n")+ylab(y_labeling)+
+    ggtitle(paste0(title_labeling," ","title if you want"))+
     scale_x_continuous(breaks=c(1:ncol(subdata)),labels = nameset)
 }
+
+##ggtitle is title of chart and paste0 is a append "string1, string2, ..."
