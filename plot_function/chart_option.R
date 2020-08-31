@@ -33,3 +33,8 @@ colramp=makecmap(x=seq(minval,maxval,col.int),
 
 
 # R color option site - http://www.stat.auckland.ac.nz/~ihaka/courses/787/R-colours-a4.pdf
+
+
+# 3. x scale display date on your data with ggplot
+# date_format is format of DATA
+scale_x_date(breaks="""DATE DATA""",labels=date_format("%m/%d"))
