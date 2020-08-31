@@ -38,3 +38,7 @@ colramp=makecmap(x=seq(minval,maxval,col.int),
 # 3. x scale display date on your data with ggplot
 # date_format is format of DATA
 scale_x_date(breaks="""DATE DATA""",labels=date_format("%m/%d"))
+
+# 4. add text in chart with ggplot
+annotate("text", x = "x location", y = "y location", label = "text what you want")+
+    
